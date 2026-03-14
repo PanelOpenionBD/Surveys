@@ -132,3 +132,46 @@ footer {
 .reward-btn.steam:hover {
   background: #0B141D;
 }
+/* Special survey buttons */
+.survey-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+/* AllCounted */
+.survey-btn.counted {
+  background: #2E8B57; /* green */
+}
+.survey-btn.counted:hover {
+  background: #006400;
+}
+
+/* Google */
+.survey-btn.google {
+  background: #4285F4; /* Google blue */
+}
+.survey-btn.google:hover {
+  background: #3367D6;
+}
+
+/* Kantar */
+.survey-btn.kantar {
+  background: #FF8C00; /* orange */
+}
+.survey-btn.kantar:hover {
+  background: #CC7000;
+}
+
+/* SampleSurveys */
+.survey-btn.sample {
+  background: #800080; /* purple */
+}
+.survey-btn.sample:hover {
+  background: #5A005A;
+}
