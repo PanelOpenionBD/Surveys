@@ -41,3 +41,18 @@ footer {
   padding: 10px;
   margin-top: 20px;
 }
+.survey-links {
+  margin: 20px;
+}
+.survey-links .button {
+  display: inline-block;
+  padding: 12px 20px;
+  background: #228B22;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.survey-links .button:hover {
+  background: #006400;
+}
