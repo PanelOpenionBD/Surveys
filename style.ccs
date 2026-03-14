@@ -1,58 +1,92 @@
+/* General page styling */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
-  background: #f0fff0;
+  background: #f0fff0; /* light green background */
   color: #333;
 }
+
+/* Header with logo and navigation */
 header {
-  background: #006400;
+  background: #006400; /* dark green */
   color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
 }
+
 .logo {
   height: 50px;
 }
-nav a {
+
+/* Sidebar navigation */
+.sidebar {
+  display: flex;
+  gap: 30px;
+}
+
+.sidebar a {
   color: white;
-  margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
+  display: flex;
+  align-items: center;
 }
-nav a:hover {
-  text-decoration: underline;
+
+.nav-icon {
+  height: 24px;
+  margin-right: 8px;
 }
-main {
-  padding: 20px;
-}
+
+/* Buttons */
 .button, button {
-  background: #228B22;
+  background: #228B22; /* medium green */
   color: white;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
   cursor: pointer;
 }
+
+.button:hover, button:hover {
+  background: #006400; /* dark green hover */
+}
+
+/* Survey cards */
+.survey-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.survey-card p {
+  margin: 5px 0;
+}
+
+/* Reward cards */
+.reward-card {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 15px;
+  margin: 15px 0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.reward-card p {
+  margin: 5px 0;
+}
+
+/* Footer */
 footer {
   background: #eee;
   text-align: center;
   padding: 10px;
   margin-top: 20px;
-}
-.survey-links {
-  margin: 20px;
-}
-.survey-links .button {
-  display: inline-block;
-  padding: 12px 20px;
-  background: #228B22;
-  color: white;
-  text-decoration: none;
-  border-radius: 5px;
-  font-weight: bold;
-}
-.survey-links .button:hover {
-  background: #006400;
 }
