@@ -86,3 +86,49 @@ footer {
   bottom: 0;
   width: calc(100% - 180px);
 }
+.reward-btn {
+  display: inline-block;
+  padding: 12px 25px;
+  border-radius: 10px;
+  font-weight: bold;
+  text-decoration: none;
+  color: white;
+  transition: 0.3s;
+  text-transform: uppercase;
+}
+
+/* Discord Nitro */
+.reward-btn.nitro {
+  background: #5865F2;
+}
+.reward-btn.nitro:hover {
+  background: #404EED;
+}
+
+/* VIP Role */
+.reward-btn.vip {
+  background: gold;
+  color: black;
+}
+.reward-btn.vip:hover {
+  background: darkgoldenrod;
+  color: white;
+}
+
+/* Premium Gift Card */
+.reward-btn.gift {
+  background: linear-gradient(45deg, #FF8C00, #FF4500);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+.reward-btn.gift:hover {
+  background: linear-gradient(45deg, #CC3700, #B22222);
+  transform: scale(1.05);
+}
+
+/* Steam Wallet */
+.reward-btn.steam {
+  background: #1B2838;
+}
+.reward-btn.steam:hover {
+  background: #0B141D;
+}
