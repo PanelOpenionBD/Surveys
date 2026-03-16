@@ -1,16 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Failed | OpenionBD</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Redirect after 10 seconds -->
-  <meta http-equiv="refresh" content="10;url=https://panelopenionbd.github.io/Surveys/survey.html">
+<meta charset="UTF-8">
+<title>Survey Result | OpenionBD</title>
+
+<meta http-equiv="refresh" content="5; url=https://panelopenionbd.github.io/Surveys/">
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f3f5;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:white;
+width:900px;
+max-width:90%;
+border-radius:6px;
+box-shadow:0 3px 12px rgba(0,0,0,0.1);
+border-top:5px solid #2ecc71;
+text-align:center;
+padding:50px 40px;
+}
+
+.icon{
+width:90px;
+height:90px;
+border-radius:50%;
+background:#eaf6ec;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+margin-bottom:30px;
+}
+
+.icon span{
+font-size:45px;
+color:#2e7d32;
+}
+
+.message{
+font-size:26px;
+line-height:1.5;
+color:#333;
+}
+
+.redirect{
+margin-top:20px;
+font-size:14px;
+color:#777;
+}
+
+.btn{
+display:inline-block;
+margin-top:25px;
+background:#1e3a8a;
+color:white;
+padding:12px 22px;
+border-radius:6px;
+text-decoration:none;
+}
+
+</style>
 </head>
+
 <body>
-  <main class="callback">
-    <h2 style="color:red;">❌ Failed!</h2>
-    <p>Something went wrong. Please try again.</p>
-    <p>You will be redirected to the survey page in 10 seconds...</p>
-  </main>
+
+<div class="card">
+
+<div class="icon">
+<span>✔</span>
+</div>
+
+<div class="message">
+Thanks for your time! You did not qualify for this survey. We'd like you to try again on other surveys. Unfortunately, this session was not eligible for any participation points as your responses didn't match with the main survey requirements.
+</div>
+
+<div class="redirect">
+Redirecting you to more surveys in 5 seconds...
+</div>
+
+<a href="https://panelopenionbd.github.io/Surveys/" class="btn">
+Go to Surveys
+</a>
+
+</div>
+
 </body>
 </html>
