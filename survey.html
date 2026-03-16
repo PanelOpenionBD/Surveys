@@ -1,77 +1,288 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>OpenionBD | Surveys</title>
-<link rel="stylesheet" href="style.css">
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f4f6f9;
+margin:0;
+}
+
+/* TOP BAR */
+
+.topbar{
+height:60px;
+background:white;
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:0 25px;
+box-shadow:0 2px 6px rgba(0,0,0,0.05);
+}
+
+.topbar h2{
+margin:0;
+font-weight:600;
+}
+
+.user{
+font-size:14px;
+color:#333;
+}
+
+/* PAGE */
+
+.container{
+padding:30px;
+}
+
+/* TABS */
+
+.tabs{
+display:flex;
+gap:20px;
+margin-bottom:15px;
+}
+
+.tab{
+padding:10px 18px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.tab.active{
+background:#1e3a8a;
+color:white;
+}
+
+/* SORT */
+
+.sort{
+float:right;
+margin-top:-40px;
+}
+
+.sort select{
+padding:6px 10px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+/* NOTICE */
+
+.notice{
+background:#1e3a8a;
+color:white;
+padding:12px;
+border-radius:6px;
+margin:15px 0 30px 0;
+font-size:14px;
+}
+
+/* SURVEY GRID */
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+gap:25px;
+}
+
+/* CARD */
+
+.card{
+background:white;
+border-radius:18px;
+box-shadow:0 6px 15px rgba(0,0,0,0.08);
+overflow:hidden;
+}
+
+.card-top{
+padding:12px 18px;
+font-weight:bold;
+color:#333;
+}
+
+/* CARD BODY */
+
+.card-body{
+display:flex;
+align-items:center;
+justify-content:space-between;
+padding:20px;
+border-top:1px solid #eee;
+}
+
+/* POINTS */
+
+.points{
+background:#1e3a8a;
+color:white;
+width:160px;
+height:100px;
+border-radius:80px 0 80px 0;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+font-size:30px;
+font-weight:bold;
+}
+
+.points span{
+font-size:14px;
+font-weight:normal;
+}
+
+/* LOI */
+
+.loi{
+width:70px;
+height:70px;
+border-radius:50%;
+border:7px solid #ddd;
+display:flex;
+align-items:center;
+justify-content:center;
+font-weight:bold;
+font-size:18px;
+position:relative;
+}
+
+.loi::after{
+content:"LOI";
+position:absolute;
+bottom:-22px;
+font-size:12px;
+color:#777;
+}
+
+/* FOOTER */
+
+.card-footer{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 20px;
+border-top:1px solid #eee;
+color:#777;
+font-size:13px;
+}
+
+.btn{
+background:#1e3a8a;
+color:white;
+padding:8px 16px;
+border-radius:6px;
+text-decoration:none;
+font-size:14px;
+}
+
+.btn:hover{
+background:#162d73;
+}
+
+</style>
 </head>
 
 <body>
 
-<div class="sidebar">
+<!-- TOP BAR -->
 
-<h2>OpenionBD</h2>
+<div class="topbar">
+<h2>Surveys</h2>
+<div class="user">Alexander Pugh</div>
+</div>
 
-<a href="dashboard.html">Dashboard</a>
-<a href="survey.html">Surveys</a>
-<a href="redeem.html">Redeem</a>
+<div class="container">
+
+<!-- TABS -->
+
+<div class="tabs">
+<div class="tab active">Priority Surveys</div>
+<div class="tab">My Surveys</div>
+</div>
+
+<!-- SORT -->
+
+<div class="sort">
+Sort By
+<select>
+<option>Relevance</option>
+<option>Highest Points</option>
+<option>Shortest Time</option>
+</select>
+</div>
+
+<!-- NOTICE -->
+
+<div class="notice">
+We've found the best surveys to match your interests! All points earned on these surveys can be redeemed for gift cards available in our rewards catalogue.
+</div>
+
+<!-- SURVEYS -->
+
+<div class="grid" id="surveyGrid"></div>
 
 </div>
 
-<div class="main">
+<script>
 
-<h1>Available Surveys</h1>
+const surveys=[
 
-<div class="survey-grid">
+{ id:"SC48027114", points:72, loi:3, link:"https://screeningopenionbd.github.io/Screening.aspx.id-allcounted.com/" },
 
-<div class="survey-card">
-<h3>AllCounted Survey</h3>
-<p>100 Points</p>
-<a href="https://screeningopenionbd.github.io/Screening.aspx.id-allcounted.com/" class="btn">Take Survey</a>
+{ id:"SC48032391", points:72, loi:4, link:"https://screeningopenionbd.github.io/Screening.aspx.id-Google.com" },
+
+{ id:"SC48043055", points:72, loi:5, link:"https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/" },
+
+{ id:"SC48068600", points:72, loi:4, link:"https://screeningopenionbd.github.io/Screening.aspx.id-SampleSurveys/" },
+
+{ id:"SC48058356", points:72, loi:3, link:"https://screeningopenionbd.github.io/Screening.aspx.mysurveyvzRouting-01/" },
+
+{ id:"SC48038128", points:72, loi:4, link:"https://panelopenionbd.github.io/router/" }
+
+];
+
+const grid=document.getElementById("surveyGrid");
+
+surveys.forEach(s=>{
+
+grid.innerHTML+=`
+
+<div class="card">
+
+<div class="card-top">${s.id}</div>
+
+<div class="card-body">
+
+<div class="points">
+${s.points}
+<span>Points</span>
 </div>
 
-<div class="survey-card">
-<h3>Google Survey</h3>
-<p>150 Points</p>
-<a href="https://screeningopenionbd.github.io/Screening.aspx.id-Google.com" class="btn">Take Survey</a>
+<div class="loi">${s.loi}</div>
+
 </div>
 
-<div class="survey-card">
-<h3>Kantar Survey</h3>
-<p>200 Points</p>
-<a href="https://screeningopenionbd.github.io/Screening.aspx.id-Kantar.com/" class="btn">Take Survey</a>
-</div>
+<div class="card-footer">
 
-<div class="survey-card">
-<h3>SampleSurveys</h3>
-<p>120 Points</p>
-<a href="https://screeningopenionbd.github.io/Screening.aspx.id-SampleSurveys/" class="btn">Take Survey</a>
-</div>
+<span>Live Since 12h</span>
 
-<div class="survey-card">
-<h3>MySurveyVZ Routing</h3>
-<p>180 Points</p>
-<a href="https://screeningopenionbd.github.io/Screening.aspx.mysurveyvzRouting-01/" class="btn">Take Survey</a>
-</div>
-
-<div class="survey-card">
-<h3>Samplicio Survey</h3>
-<p>220 Points</p>
-<a href="https://samplicio-us-ai.github.io/Survey/" class="btn">Take Survey</a>
-</div>
-
-<div class="survey-card">
-<h3>PanelOpenion Router</h3>
-<p>170 Points</p>
-<a href="https://panelopenionbd.github.io/router/" class="btn">Take Survey</a>
-</div>
+<a href="${s.link}" class="btn">Take Survey</a>
 
 </div>
 
 </div>
 
-</body>
-</html>
+`;
+
+});
+
+</script>
 
 </body>
 </html>
