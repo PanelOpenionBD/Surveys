@@ -1,16 +1,97 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Success | OpenionBD</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Redirect after 10 seconds -->
-  <meta http-equiv="refresh" content="10;url=https://panelopenionbd.github.io/Surveys/survey.html">
+<meta charset="UTF-8">
+<title>Survey Result | OpenionBD</title>
+
+<style>
+
+body{
+font-family:Arial, Helvetica, sans-serif;
+background:#f2f3f5;
+margin:0;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+/* CARD */
+
+.card{
+background:white;
+width:900px;
+max-width:90%;
+border-radius:6px;
+box-shadow:0 3px 12px rgba(0,0,0,0.1);
+border-top:5px solid #2ecc71;
+text-align:center;
+padding:50px 40px;
+}
+
+/* ICON */
+
+.icon{
+width:90px;
+height:90px;
+border-radius:50%;
+background:#eaf6ec;
+display:flex;
+align-items:center;
+justify-content:center;
+margin:auto;
+margin-bottom:30px;
+}
+
+.icon span{
+font-size:45px;
+color:#2e7d32;
+}
+
+/* TEXT */
+
+.message{
+font-size:28px;
+line-height:1.5;
+color:#333;
+}
+
+/* BUTTON */
+
+.btn{
+display:inline-block;
+margin-top:35px;
+background:#1e3a8a;
+color:white;
+padding:12px 24px;
+border-radius:6px;
+text-decoration:none;
+font-size:16px;
+}
+
+.btn:hover{
+background:#162c70;
+}
+
+</style>
+
 </head>
+
 <body>
-  <main class="callback">
-    <h2 style="color:green;">✅ Success!</h2>
-    <p>Your request was submitted successfully.</p>
-    <p>You will be redirected to the survey page in 10 seconds...</p>
-  </main>
+
+<div class="card">
+
+<div class="icon">
+<span>✔</span>
+</div>
+
+<div class="message">
+Thanks for your time! You did not qualify for this survey. We'd like you to try again on other surveys. Unfortunately, this session was not eligible for any participation points as your responses didn't match with the main survey requirements.
+</div>
+
+<a href="survey.html" class="btn">Back to Surveys</a>
+
+</div>
+
 </body>
 </html>
