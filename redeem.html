@@ -1,84 +1,73 @@
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OpenionBD | Redeem Rewards</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
-</head>
+<div class="container">
 
-<body>
+    <h1>Redeem Points</h1>
 
-<!-- Sidebar -->
-<div class="sidebar">
-    <h2 class="logo">OpenionBD</h2>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        🔐 Password Validation
+    </div>
 
-    <nav>
-        <a href="dashboard.html"><i class="fas fa-home"></i> Dashboard</a>
-        <a href="survey.html"><i class="fas fa-poll"></i> Surveys</a>
-        <a href="redeem.html" class="active"><i class="fas fa-gift"></i> Redeem</a>
-    </nav>
-</div>
+    <div class="content">
 
-<!-- Main Content -->
-<div class="main">
+        <!-- LEFT: Password Box -->
+        <div class="card password-box">
+            <h3>Please validate your password in order to redeem the points:</h3>
 
-    <header class="page-header">
-        <h1>Redeem Rewards</h1>
-        <p>Exchange your points for exciting rewards</p>
-    </header>
+            <label>Password:</label>
+            <input type="password" placeholder="Enter password">
 
-    <div class="redeem-grid">
-
-        <!-- Card -->
-        <div class="reward-card">
-            <h3><i class="fab fa-paypal"></i> PayPal $5</h3>
-            <p class="points">500 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
+            <button class="btn">Redeem</button>
         </div>
 
-        <div class="reward-card">
-            <h3><i class="fab fa-amazon"></i> Amazon Gift Card</h3>
-            <p class="points">700 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
-        </div>
+        <!-- RIGHT: User Levels -->
+        <div class="card levels">
 
-        <div class="reward-card">
-            <h3><i class="fab fa-discord"></i> Discord Nitro</h3>
-            <p class="points">700 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
-        </div>
+            <div class="levels-header">
+                <span>👤 User Level</span>
+                <span class="badge">★ Basic</span>
+            </div>
 
-        <div class="reward-card">
-            <h3><i class="fab fa-google-play"></i> Google Play Card</h3>
-            <p class="points">600 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
-        </div>
+            <div class="level-grid">
 
-        <div class="reward-card">
-            <h3><i class="fab fa-discord"></i> Discord VIP Role</h3>
-            <p class="points">300 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
-        </div>
+                <div class="level-card active">
+                    <div class="icon blue">★</div>
+                    <div>
+                        <h4>Basic</h4>
+                        <p>Redeemable value starts at <b>2,500 points</b></p>
+                        <button class="btn small">Redeem</button>
+                    </div>
+                </div>
 
-        <div class="reward-card">
-            <h3><i class="fab fa-discord"></i> Discord Premium Role</h3>
-            <p class="points">450 Points</p>
-            <a class="btn" href="https://forms.gle/txAr3goDh8A7tiU38">Redeem</a>
+                <div class="level-card">
+                    <div class="icon green">★</div>
+                    <div>
+                        <h4>Verified</h4>
+                        <p>Redeemable value starts at <b>2,000 points</b></p>
+                        <button class="btn small">Redeem</button>
+                    </div>
+                </div>
+
+                <div class="level-card">
+                    <div class="icon purple">★</div>
+                    <div>
+                        <h4>Premium</h4>
+                        <p>Redeemable value starts at <b>1,500 points</b></p>
+                        <button class="btn small">Redeem</button>
+                    </div>
+                </div>
+
+                <div class="level-card">
+                    <div class="icon orange">★</div>
+                    <div>
+                        <h4>Ambassador</h4>
+                        <p>Redeemable value starts at <b>1,000 points</b></p>
+                        <button class="btn small">Redeem</button>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </div>
-
 </div>
-
-<!-- Footer -->
-<footer>
-    <p>© 2026 OpenionBD. All rights reserved.</p>
-</footer>
-
-</body>
-</html>
-```
-
