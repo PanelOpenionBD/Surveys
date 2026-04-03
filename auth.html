@@ -4,184 +4,169 @@
 <meta charset="UTF-8">
 <title>Login | OpenionBD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <style>
+
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial, Helvetica, sans-serif;
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
-    background:#0f172a;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    height:100vh;
-    color:white;
+background:#0f172a;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
 }
 
 /* LOGIN BOX */
+
 .box{
-    background:#1e293b;
-    padding:35px;
-    border-radius:12px;
-    width:320px;
-    text-align:center;
-    box-shadow:0 15px 35px rgba(0,0,0,0.4);
-    animation:fadeIn 0.5s ease;
+background:#1e293b;
+padding:35px;
+border-radius:12px;
+width:320px;
+text-align:center;
+box-shadow:0 15px 35px rgba(0,0,0,0.4);
+animation:fadeIn 0.5s ease;
 }
 
 @keyframes fadeIn{
-    from{opacity:0; transform:translateY(10px);}
-    to{opacity:1; transform:translateY(0);}
+from{opacity:0; transform:translateY(10px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 .box h2{
-    margin-bottom:20px;
+margin-bottom:20px;
 }
 
 /* INPUTS */
+
 .input-group{
-    position:relative;
-    margin-bottom:10px;
+position:relative;
 }
 
 input{
-    width:100%;
-    padding:12px;
-    border:2px solid #333;
-    border-radius:6px;
-    background:#020617;
-    color:white;
-    font-size:14px;
-}
-
-input:focus{
-    border-color:#22c55e;
-    outline:none;
+width:100%;
+padding:12px;
+margin:10px 0;
+border:none;
+border-radius:6px;
+outline:none;
+background:#020617;
+color:white;
 }
 
 /* SHOW PASSWORD */
+
 .show-pass{
-    position:absolute;
-    right:10px;
-    top:50%;
-    transform:translateY(-50%);
-    cursor:pointer;
-    font-size:12px;
-    color:#38bdf8;
+position:absolute;
+right:10px;
+top:50%;
+transform:translateY(-50%);
+cursor:pointer;
+font-size:12px;
+color:#38bdf8;
 }
 
 /* BUTTON */
+
 button{
-    width:100%;
-    padding:12px;
-    border:none;
-    border-radius:6px;
-    background:#22c55e;
-    color:white;
-    cursor:pointer;
-    font-size:16px;
-    margin-top:10px;
-    transition:0.2s;
+width:100%;
+padding:12px;
+border:none;
+border-radius:6px;
+background:#22c55e;
+color:white;
+cursor:pointer;
+font-size:16px;
+margin-top:10px;
+transition:0.2s;
 }
 
 button:hover{
-    background:#16a34a;
+background:#16a34a;
 }
 
 /* LINKS */
+
 .signup{
-    margin-top:15px;
-    display:block;
-    color:#38bdf8;
-    text-decoration:none;
-    font-size:14px;
+margin-top:15px;
+display:block;
+color:#38bdf8;
+text-decoration:none;
+font-size:14px;
 }
 
 /* ERROR */
+
 .error{
-    color:#ef4444;
-    font-size:13px;
-    margin-top:10px;
-    display:none;
+color:#ef4444;
+font-size:13px;
+margin-top:10px;
+display:none;
 }
+
 </style>
 </head>
+
 <body>
 
 <div class="box">
-    <h2>Login</h2>
+<h2>Login</h2>
 
-    <input type="text" id="username" placeholder="Username">
+<input type="text" id="username" placeholder="Username">
 
-    <div class="input-group">
-        <input type="password" id="password" placeholder="Password">
-        <span class="show-pass" onclick="togglePassword()">Show</span>
-    </div>
-
-    <button onclick="login()">Login</button>
-
-    <div class="error" id="error">Invalid username or password</div>
-
-    <a href="signup.html" class="signup">Create Account</a>
+<div class="input-group">
+<input type="password" id="password" placeholder="Password">
+<span class="show-pass" onclick="togglePassword()">Show</span>
 </div>
 
+<button onclick="login()">Login</button>
+
+<div class="error" id="error">Invalid username or password</div>
+
+<a href="signup.html" class="signup">Create Account</a>
+</div>
+
+<!-- JS FILE -->
+<script src="auth.js"></script>
+
 <script>
-// SHOW / HIDE PASSWORD
+
+// 👁️ SHOW / HIDE PASSWORD
 function togglePassword(){
     let pass = document.getElementById("password");
-    pass.type = (pass.type === "password") ? "text" : "password";
-}
-
-// SIMPLE LOGIN LOGIC
-const users = [
-    {username:"user1", password:"pass123"},
-    {username:"user2", password:"mypassword"}
-];
-
-function login(){
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const error = document.getElementById("error");
-
-    const user = users.find(u => u.username === username && u.password === password);
-    if(user){
-        localStorage.setItem("loggedInUser", username);
-        window.location.href = "dashboard.html";
+    if(pass.type === "password"){
+        pass.type = "text";
     } else {
-        error.style.display = "block";
+        pass.type = "password";
     }
 }
 
-// AUTO REDIRECT IF ALREADY LOGGED IN
-if(localStorage.getItem("loggedInUser")){
-    window.location.href="dashboard.html";
-}
-    function generatePanelCode() {
-    // Random 6-digit code (you can customize length/format)
-    return Math.floor(100000 + Math.random() * 900000);
+// ❌ CUSTOM ERROR DISPLAY
+function showError(){
+    document.getElementById("error").style.display = "block";
 }
 
-function login(){
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
-    const error = document.getElementById("error");
-
-    const user = users.find(u => u.username === username && u.password === password);
-    if(user){
-        localStorage.setItem("loggedInUser", username);
-
-        // Generate panel and query params
-        const panelCode = generatePanelCode();
-        const url = `dashboard.html?panel=${panelCode}&accountfrom=${username}&en=us&refresh=01`;
-
-        window.location.href = url;
-    } else {
-        error.style.display = "block";
+// 🔁 OVERRIDE ALERT (OPTIONAL CLEAN UX)
+const oldLogin = login;
+login = function(){
+    try{
+        oldLogin();
+    }catch(e){
+        showError();
     }
-}
+};
+
+</script>
+
+</body>
+</html>
 </script>
 
 </body>
