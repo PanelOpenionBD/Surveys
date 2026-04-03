@@ -2,233 +2,130 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>OpenionBD | Dashboard</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>OpenionBD Panel | Login</title>
 <style>
+/* GLOBAL */
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;display:flex;justify-content:center;align-items:center;}
 
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
+/* CONTAINER */
+.container{
+    display:flex;
+    flex-wrap:wrap;
+    background:#1e293b;
+    border-radius:12px;
+    overflow:hidden;
+    width:900px;
+    max-width:95%;
+    box-shadow:0 10px 30px rgba(0,0,0,0.4);
 }
 
-body{
-display:flex;
-background:#0f172a;
-color:white;
-min-height:100vh;
+/* HERO */
+.hero{
+    flex:1;
+    background:#0f172a;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.hero h1{font-size:28px;margin-bottom:20px;color:#22c55e;}
+.hero p{font-size:16px;color:#cbd5e1;line-height:1.6;}
+
+/* LOGIN BOX */
+.login-box{
+    flex:1;
+    background:#020617;
+    padding:40px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+}
+.login-box h2{text-align:center;margin-bottom:20px;}
+.login-box input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border-radius:6px;
+    border:none;
+    background:#1e293b;
+    color:white;
+}
+.login-box button{
+    width:100%;
+    padding:12px;
+    margin-top:10px;
+    border:none;
+    border-radius:6px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+.login-box button:hover{ background:#16a34a; }
+.login-box .signup{
+    display:block;
+    margin-top:15px;
+    color:#38bdf8;
+    text-decoration:none;
+    font-size:14px;
+    text-align:center;
+}
+.login-box .error{
+    color:#ef4444;
+    font-size:13px;
+    margin-top:10px;
+    display:none;
 }
 
-/* SIDEBAR */
-
-.sidebar{
-width:230px;
-background:#020617;
-padding:25px;
-display:flex;
-flex-direction:column;
+/* RESPONSIVE */
+@media(max-width:768px){
+    .container{flex-direction:column;}
+    .hero,.login-box{padding:20px;}
 }
-
-.sidebar h2{
-margin-bottom:30px;
-}
-
-.sidebar a{
-text-decoration:none;
-color:white;
-padding:12px;
-border-radius:6px;
-margin-bottom:10px;
-display:block;
-transition:0.2s;
-}
-
-.sidebar a:hover{
-background:#1e293b;
-}
-
-/* MAIN */
-
-.main{
-flex:1;
-padding:40px;
-}
-
-/* TOP INFO BAR */
-
-.topbar{
-position:fixed;
-top:0;
-left:230px;
-right:0;
-background:#020617;
-padding:10px;
-font-size:13px;
-display:flex;
-justify-content:space-between;
-align-items:center;
-z-index:1000;
-}
-
-.logout-btn{
-background:#ef4444;
-border:none;
-padding:6px 12px;
-border-radius:6px;
-color:white;
-cursor:pointer;
-}
-
-/* STATS */
-
-.stats{
-display:grid;
-grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-gap:20px;
-margin-top:80px;
-}
-
-.card{
-background:#1e293b;
-padding:25px;
-border-radius:10px;
-text-align:center;
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-5px);
-}
-
-.card h3{
-margin-bottom:10px;
-}
-
-.card p{
-font-size:28px;
-font-weight:bold;
-color:#22c55e;
-}
-
-/* WELCOME */
-
-.welcome{
-margin-top:40px;
-background:#1e293b;
-padding:25px;
-border-radius:10px;
-line-height:1.6;
-}
-
-/* FOOTER */
-
-footer{
-position:fixed;
-bottom:0;
-left:230px;
-right:0;
-background:#020617;
-padding:12px;
-text-align:center;
-font-size:14px;
-}
-
 </style>
 </head>
-
 <body>
 
-<div class="sidebar">
-<h2>OpenionBD</h2>
-
-<a href="dashboard.html">Dashboard</a>
-<a href="survey.html">Surveys</a>
-<a href="redeem.html">Redeem</a>
+<div class="container">
+    <div class="hero">
+        <h1>OpenionBD Panel</h1>
+        <p>Earn points by completing surveys, redeem rewards, and join our community of survey takers. Sign in to start earning today!</p>
+    </div>
+    <div class="login-box">
+        <h2>Login</h2>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
+        <button onclick="login()">Login</button>
+        <div class="error" id="error">Invalid username or password</div>
+        <a href="signup.html" class="signup">Create Account</a>
+    </div>
 </div>
-
-
-<!-- TOP BAR -->
-<div class="topbar" id="topbar">
-Loading session...
-<button class="logout-btn" onclick="logout()">Logout</button>
-</div>
-
-
-<div class="main">
-
-<h1>Dashboard</h1>
-
-<div class="stats">
-
-<div class="card">
-<h3>Total Points</h3>
-<p id="points">520</p>
-</div>
-
-<div class="card">
-<h3>Completed Surveys</h3>
-<p>14</p>
-</div>
-
-<div class="card">
-<h3>Available Surveys</h3>
-<p>7</p>
-</div>
-
-</div>
-
-<div class="welcome">
-Welcome to <strong>OpenionBD</strong>.  
-Complete surveys and earn points to redeem rewards.  
-New surveys are added regularly — check the surveys page to start earning.
-</div>
-
-</div>
-
-<footer>
-© 2026 OpenionBD
-</footer>
 
 <script>
-
-// 🔐 AUTH CHECK
-let isLoggedIn = localStorage.getItem("isLoggedIn");
-let expiry = localStorage.getItem("expiry");
-
-if(isLoggedIn !== "true" || Date.now() > expiry){
-    localStorage.clear();
-    window.location.href = "auth.html";
+// Redirect if already logged in
+if(localStorage.getItem("loggedInUser")){
+    window.location.href="dashboard.html";
 }
 
-// 📦 GET DATA
-let username = localStorage.getItem("username");
-let panel = localStorage.getItem("panel");
-let country = localStorage.getItem("country");
-let refresh = localStorage.getItem("refresh");
+// Dummy credentials for demo
+const users = [
+    {username:"user1", password:"pass123"},
+    {username:"user2", password:"mypassword"}
+];
 
-// 🧠 UPDATE TOPBAR
-document.getElementById("topbar").innerHTML = `
-Panel: ${panel} | 
-User: ${username} | 
-Country: ${country} | 
-Refresh: ${refresh}
-<button class="logout-btn" onclick="logout()">Logout</button>
-`;
-
-// 🔄 OPTIONAL: AUTO REFRESH BASED ON RATE
-setInterval(() => {
-    console.log("Auto refresh triggered");
-}, refresh * 1000);
-
-
-// 🔓 LOGOUT
-function logout(){
-    localStorage.clear();
-    window.location.href = "auth.html";
+function login(){
+    const username=document.getElementById("username").value.trim();
+    const password=document.getElementById("password").value.trim();
+    const user = users.find(u=>u.username===username && u.password===password);
+    if(user){
+        localStorage.setItem("loggedInUser", username);
+        window.location.href="dashboard.html";
+    } else{
+        document.getElementById("error").style.display="block";
+    }
 }
-
 </script>
 
 </body>
