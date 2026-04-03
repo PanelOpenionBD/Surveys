@@ -93,51 +93,62 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
         <h1>OpenionBD Panel</h1>
         <p>Earn points by completing surveys, redeem rewards, and join our community of survey takers. Sign in to start earning today!</p>
    <div class="box">
+<div class="box">
 <h2>Login</h2>
 
 <input type="text" id="username" placeholder="Username">
-
-<div class="input-group">
 <input type="password" id="password" placeholder="Password">
-<span class="show-pass" onclick="togglePassword()">Show</span>
-</div>
 
 <button onclick="login()">Login</button>
-
-<div class="error" id="error">Invalid username or password</div>
 
 <a href="signup.html" class="signup">Create Account</a>
 </div>
 
-<!-- JS FILE -->
-<script src="auth.js"></script>
-
 <script>
 
-// 👁️ SHOW / HIDE PASSWORD
-function togglePassword(){
-    let pass = document.getElementById("password");
-    if(pass.type === "password"){
-        pass.type = "text";
+// Skip login if already logged in
+if(localStorage.getItem("isLoggedIn") === "true"){
+    if(Date.now() < localStorage.getItem("expiry")){
+        window.location.href = "dashboard.html";
+    }
+}
+
+function generatePanelCode(){
+    return "panel-" + Math.floor(Math.random() * 1000000);
+}
+
+function login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    let savedUser = localStorage.getItem("acc_username");
+    let savedPass = localStorage.getItem("acc_password");
+
+    if(username === savedUser && password === savedPass){
+
+        let panel = generatePanelCode();
+        let country = navigator.language || "en-US";
+        let refresh = "01";
+        let expiry = Date.now() + (24 * 60 * 60 * 1000);
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+        localStorage.setItem("panel", panel);
+        localStorage.setItem("expiry", expiry);
+        localStorage.setItem("country", country);
+        localStorage.setItem("refresh", refresh);
+
+        window.location.href = `dashboard.html?${panel}?accountfrom-${username}?${country}?refresh-${refresh}`;
+
     } else {
-        pass.type = "password";
+        alert("Invalid username or password");
     }
 }
 
-// ❌ CUSTOM ERROR DISPLAY
-function showError(){
-    document.getElementById("error").style.display = "block";
-}
+</script>
 
-// 🔁 OVERRIDE ALERT (OPTIONAL CLEAN UX)
-const oldLogin = login;
-login = function(){
-    try{
-        oldLogin();
-    }catch(e){
-        showError();
-    }
-};
+</body>
+</html>
 
 </script>
 
