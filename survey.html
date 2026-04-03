@@ -12,6 +12,7 @@ body{
     font-family:Arial, Helvetica, sans-serif;
     background:#0f172a;
     color:white;
+    min-height:100vh;
 }
 /* SIDEBAR */
 .sidebar{
@@ -99,6 +100,7 @@ footer{
 </head>
 <body>
 
+<!-- SIDEBAR -->
 <div class="sidebar">
     <h2>OpenionBD</h2>
     <a href="dashboard.html">Dashboard</a>
@@ -106,8 +108,10 @@ footer{
     <a href="redeem.html">Redeem</a>
 </div>
 
-<div class="topbar" id="topbar">User: Unknown</div>
+<!-- TOPBAR -->
+<div class="topbar" id="topbar">User: </div>
 
+<!-- MAIN CONTENT -->
 <div class="main">
     <h1>Available Surveys</h1>
     <div class="grid" id="surveyGrid"></div>
@@ -116,6 +120,18 @@ footer{
 <footer>© 2026 OpenionBD</footer>
 
 <script>
+// Check if user is logged in
+const loggedUser = localStorage.getItem("loggedInUser");
+const topbar = document.getElementById("topbar");
+
+if(!loggedUser){
+    // Not logged in → redirect to login
+    window.location.href = "index.html";
+}else{
+    topbar.textContent = `User: ${loggedUser}`;
+}
+
+// Survey data
 const surveys=[
     { id:"SC48027114", points:120, loi:3, link:"https://screeningopenionbd.github.io/Screening.aspx.id-allcounted.com/" },
     { id:"SC48032391", points:122, loi:4, link:"https://screeningopenionbd.github.io/Screening.aspx.id-Google.com" },
@@ -125,6 +141,7 @@ const surveys=[
     { id:"SC48038128", points:54, loi:14, link:"https://panelopenionbd.github.io/router/" }
 ];
 
+// Populate survey grid
 const grid=document.getElementById("surveyGrid");
 surveys.forEach(s=>{
     grid.innerHTML += `
