@@ -92,40 +92,53 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
     <div class="hero">
         <h1>OpenionBD Panel</h1>
         <p>Earn points by completing surveys, redeem rewards, and join our community of survey takers. Sign in to start earning today!</p>
-    </div>
-    <div class="login-box">
-        <h2>Login</h2>
-        <input type="text" id="username" placeholder="Username">
-        <input type="password" id="password" placeholder="Password">
-        <button onclick="login()">Login</button>
-        <div class="error" id="error">Invalid username or password</div>
-        <a href="signup.html" class="signup">Create Account</a>
-    </div>
+   <div class="box">
+<h2>Login</h2>
+
+<input type="text" id="username" placeholder="Username">
+
+<div class="input-group">
+<input type="password" id="password" placeholder="Password">
+<span class="show-pass" onclick="togglePassword()">Show</span>
 </div>
 
+<button onclick="login()">Login</button>
+
+<div class="error" id="error">Invalid username or password</div>
+
+<a href="signup.html" class="signup">Create Account</a>
+</div>
+
+<!-- JS FILE -->
+<script src="auth.js"></script>
+
 <script>
-// Redirect if already logged in
-if(localStorage.getItem("loggedInUser")){
-    window.location.href="dashboard.html";
-}
 
-// Dummy credentials for demo
-const users = [
-    {username:"user1", password:"pass123"},
-    {username:"user2", password:"mypassword"}
-];
-
-function login(){
-    const username=document.getElementById("username").value.trim();
-    const password=document.getElementById("password").value.trim();
-    const user = users.find(u=>u.username===username && u.password===password);
-    if(user){
-        localStorage.setItem("loggedInUser", username);
-        window.location.href="dashboard.html";
-    } else{
-        document.getElementById("error").style.display="block";
+// 👁️ SHOW / HIDE PASSWORD
+function togglePassword(){
+    let pass = document.getElementById("password");
+    if(pass.type === "password"){
+        pass.type = "text";
+    } else {
+        pass.type = "password";
     }
 }
+
+// ❌ CUSTOM ERROR DISPLAY
+function showError(){
+    document.getElementById("error").style.display = "block";
+}
+
+// 🔁 OVERRIDE ALERT (OPTIONAL CLEAN UX)
+const oldLogin = login;
+login = function(){
+    try{
+        oldLogin();
+    }catch(e){
+        showError();
+    }
+};
+
 </script>
 
 </body>
