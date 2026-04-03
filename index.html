@@ -4,10 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OpenionBD Panel | Login</title>
+
 <style>
-/* GLOBAL */
 *{box-sizing:border-box;margin:0;padding:0;}
-body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;display:flex;justify-content:center;align-items:center;}
+body{
+    font-family:Arial,sans-serif;
+    background:#0f172a;
+    color:white;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
 
 /* CONTAINER */
 .container{
@@ -43,6 +51,7 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
     justify-content:center;
 }
 .login-box h2{text-align:center;margin-bottom:20px;}
+
 .login-box input{
     width:100%;
     padding:12px;
@@ -52,6 +61,7 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
     background:#1e293b;
     color:white;
 }
+
 .login-box button{
     width:100%;
     padding:12px;
@@ -64,19 +74,14 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
     cursor:pointer;
 }
 .login-box button:hover{ background:#16a34a; }
-.login-box .signup{
+
+.signup{
     display:block;
     margin-top:15px;
     color:#38bdf8;
     text-decoration:none;
     font-size:14px;
     text-align:center;
-}
-.login-box .error{
-    color:#ef4444;
-    font-size:13px;
-    margin-top:10px;
-    display:none;
 }
 
 /* RESPONSIVE */
@@ -86,37 +91,53 @@ body{font-family:Arial,sans-serif;background:#0f172a;color:white;height:100vh;di
 }
 </style>
 </head>
+
 <body>
 
 <div class="container">
+
+    <!-- LEFT SIDE -->
     <div class="hero">
         <h1>OpenionBD Panel</h1>
-        <p>Earn points by completing surveys, redeem rewards, and join our community of survey takers. Sign in to start earning today!</p>
-   <div class="box">
-<div class="box">
-<h2>Login</h2>
+        <p>
+            Earn points by completing surveys, redeem rewards, and join our 
+            community of survey takers. Sign in to start earning today!
+        </p>
+    </div>
 
-<input type="text" id="username" placeholder="Username">
-<input type="password" id="password" placeholder="Password">
+    <!-- RIGHT SIDE -->
+    <div class="login-box">
+        <h2>Login</h2>
 
-<button onclick="login()">Login</button>
+        <input type="text" id="username" placeholder="Username">
+        <input type="password" id="password" placeholder="Password">
 
-<a href="signup.html" class="signup">Create Account</a>
+        <button onclick="login()">Login</button>
+
+        <a href="signup.html" class="signup">Create Account</a>
+    </div>
+
 </div>
 
 <script>
 
-// Skip login if already logged in
+// Auto redirect if already logged in
 if(localStorage.getItem("isLoggedIn") === "true"){
-    if(Date.now() < localStorage.getItem("expiry")){
+    let expiry = localStorage.getItem("expiry");
+
+    if(Date.now() < expiry){
         window.location.href = "dashboard.html";
+    } else {
+        localStorage.clear();
     }
 }
 
+// Generate panel ID
 function generatePanelCode(){
     return "panel-" + Math.floor(Math.random() * 1000000);
 }
 
+// Login function
 function login(){
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -144,11 +165,6 @@ function login(){
         alert("Invalid username or password");
     }
 }
-
-</script>
-
-</body>
-</html>
 
 </script>
 
