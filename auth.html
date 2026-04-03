@@ -1,116 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Login | OpenionBD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
 background:#0f172a;
+color:white;
 display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-color:white;
+font-family:Arial;
 }
-
-/* LOGIN BOX */
 
 .box{
 background:#1e293b;
-padding:35px;
-border-radius:12px;
-width:320px;
+padding:30px;
+border-radius:10px;
+width:300px;
 text-align:center;
-box-shadow:0 15px 35px rgba(0,0,0,0.4);
-animation:fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0; transform:translateY(10px);}
-to{opacity:1; transform:translateY(0);}
-}
-
-.box h2{
-margin-bottom:20px;
-}
-
-/* INPUTS */
-
-.input-group{
-position:relative;
 }
 
 input{
 width:100%;
-padding:12px;
+padding:10px;
 margin:10px 0;
 border:none;
 border-radius:6px;
-outline:none;
-background:#020617;
-color:white;
 }
-
-/* SHOW PASSWORD */
-
-.show-pass{
-position:absolute;
-right:10px;
-top:50%;
-transform:translateY(-50%);
-cursor:pointer;
-font-size:12px;
-color:#38bdf8;
-}
-
-/* BUTTON */
 
 button{
 width:100%;
-padding:12px;
+padding:10px;
 border:none;
 border-radius:6px;
 background:#22c55e;
 color:white;
 cursor:pointer;
-font-size:16px;
 margin-top:10px;
-transition:0.2s;
 }
-
-button:hover{
-background:#16a34a;
-}
-
-/* LINKS */
 
 .signup{
 margin-top:15px;
 display:block;
 color:#38bdf8;
 text-decoration:none;
-font-size:14px;
 }
-
-/* ERROR */
-
-.error{
-color:#ef4444;
-font-size:13px;
-margin-top:10px;
-display:none;
-}
-
 </style>
 </head>
 
@@ -120,53 +58,54 @@ display:none;
 <h2>Login</h2>
 
 <input type="text" id="username" placeholder="Username">
-
-<div class="input-group">
 <input type="password" id="password" placeholder="Password">
-<span class="show-pass" onclick="togglePassword()">Show</span>
-</div>
 
 <button onclick="login()">Login</button>
-
-<div class="error" id="error">Invalid username or password</div>
 
 <a href="signup.html" class="signup">Create Account</a>
 </div>
 
-<!-- JS FILE -->
-<script src="auth.js"></script>
-
 <script>
 
-// 👁️ SHOW / HIDE PASSWORD
-function togglePassword(){
-    let pass = document.getElementById("password");
-    if(pass.type === "password"){
-        pass.type = "text";
+// Skip login if already logged in
+if(localStorage.getItem("isLoggedIn") === "true"){
+    if(Date.now() < localStorage.getItem("expiry")){
+        window.location.href = "dashboard.html";
+    }
+}
+
+function generatePanelCode(){
+    return "panel-" + Math.floor(Math.random() * 1000000);
+}
+
+function login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    let savedUser = localStorage.getItem("acc_username");
+    let savedPass = localStorage.getItem("acc_password");
+
+    if(username === savedUser && password === savedPass){
+
+        let panel = generatePanelCode();
+        let country = navigator.language || "en-US";
+        let refresh = "01";
+        let expiry = Date.now() + (24 * 60 * 60 * 1000);
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+        localStorage.setItem("panel", panel);
+        localStorage.setItem("expiry", expiry);
+        localStorage.setItem("country", country);
+        localStorage.setItem("refresh", refresh);
+
+        window.location.href = `dashboard.html?${panel}?accountfrom-${username}?${country}?refresh-${refresh}`;
+
     } else {
-        pass.type = "password";
+        alert("Invalid username or password");
     }
 }
 
-// ❌ CUSTOM ERROR DISPLAY
-function showError(){
-    document.getElementById("error").style.display = "block";
-}
-
-// 🔁 OVERRIDE ALERT (OPTIONAL CLEAN UX)
-const oldLogin = login;
-login = function(){
-    try{
-        oldLogin();
-    }catch(e){
-        showError();
-    }
-};
-
-</script>
-
-</body>
-</html>
 </script>
 
 </body>
