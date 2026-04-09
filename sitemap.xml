@@ -7,23 +7,26 @@
   </url>
 
   <url>
-    <loc>https://openionbd.2bd.net/dashboard.html</loc>
+    <loc>https://openionbd.2bd.net/earn-money-bangladesh.html</loc>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://openionbd.2bd.net/survey.html</loc>
+    <loc>https://openionbd.2bd.net/best-survey-sites-bd.html</loc>
+    <priority>0.8</priority>
   </url>
 
   <url>
-    <loc>https://openionbd.2bd.net/redeem.html</loc>
+    <loc>https://openionbd.2bd.net/auth.html</loc>
+    <priority>0.3</priority>
   </url>
 
   <url>
-  <loc>https://openionbd.2bd.net/earn-money-bangladesh.html</loc>
-</url>
+    <loc>https://openionbd.2bd.net/signup.html</loc>
+    <priority>0.3</priority>
+  </url>
 
-<url>
-  <loc>https://openionbd.2bd.net/best-survey-sites-bd.html</loc>
+</urlset>s-bd.html</loc>
 </url>
   
 </urlset>
