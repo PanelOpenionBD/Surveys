@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenionBD | Offline</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f2f2f2;
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+        text-align: center;
+    }
+    .container {
+        background: #fff;
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #e74c3c;
+        margin-bottom: 20px;
+    }
+    p {
+        font-size: 18px;
+        margin-bottom: 30px;
+    }
+    .retry-btn {
+        padding: 10px 25px;
+        background: #3498db;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .retry-btn:hover {
+        background: #2980b9;
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h1>⚠ You are Offline</h1>
+    <p>It looks like your internet connection is lost. Please check your network.</p>
+    <button class="retry-btn" onclick="retry()">Retry</button>
+</div>
+
+<script>
+    function retry() {
+        if (navigator.onLine) {
+            // If online, go back to home or last page
+            window.location.href = "survey.html"; // or "dashboard.html"
+        } else {
+            alert("Still offline. Please check your connection.");
+        }
+    }
+
+    // Auto-redirect back if network comes online
+    window.addEventListener("online", () => {
+        window.location.href = "survey.html"; // or any main page
+    });
+</script>
+</body>
+</html>
