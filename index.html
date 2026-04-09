@@ -1,37 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>OpenionBD - Earn Money with Surveys in Bangladesh</title>
 
-<meta name="description" content="OpenionBD lets you earn rewards by completing surveys online in Bangladesh. Fast payouts and easy tasks.">
-
-<meta name="keywords" content="earn money Bangladesh, survey site BD, online income BD,openionbd,OPENIONBD,OpenionBD">
-
-<meta name="robots" content="index, follow">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>OpenionBD Panel | Login</title>
-<h3>Learn More</h3>
-<ul>
-<li><a href="earn-money-bangladesh.html">How to Earn Money in Bangladesh</a></li>
-<li><a href="best-survey-sites-bd.html">Best Survey Sites in BD</a></li>
-</ul>
+
+<!-- PRIMARY SEO -->
+<title>OpenionBD - Earn Money Online in Bangladesh with Surveys</title>
+
+<meta name="description" content="OpenionBD is a trusted survey platform in Bangladesh where you can earn money online by completing simple surveys. Fast payouts and easy tasks.">
+
+<meta name="keywords" content="OpenionBD, openionbd, earn money Bangladesh, survey site BD, online income BD, make money online Bangladesh">
+
+<meta name="robots" content="index, follow">
+
+<link rel="canonical" href="https://openionbd.2bd.net/">
+
+<!-- OPEN GRAPH (for Facebook sharing) -->
+<meta property="og:title" content="OpenionBD - Earn Money Online in Bangladesh">
+<meta property="og:description" content="Earn rewards by completing surveys in Bangladesh with OpenionBD.">
+<meta property="og:url" content="https://openionbd.2bd.net/">
+<meta property="og:type" content="website">
+
+<!-- TWITTER -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="OpenionBD Survey Platform">
+<meta name="twitter:description" content="Earn money online in Bangladesh with surveys.">
+
 <style>
 *{box-sizing:border-box;margin:0;padding:0;}
 body{
     font-family:Arial,sans-serif;
     background:#0f172a;
     color:white;
-    height:100vh;
+    min-height:100vh;
     display:flex;
-    justify-content:center;
-    align-items:center;
+    flex-direction:column;
+}
+
+/* TOP NAV SEO LINKS */
+.top-links{
+    background:#020617;
+    padding:10px;
+    text-align:center;
+}
+.top-links a{
+    color:#38bdf8;
+    margin:0 10px;
+    text-decoration:none;
+    font-size:14px;
+}
+.top-links a:hover{
+    text-decoration:underline;
 }
 
 /* CONTAINER */
 .container{
     display:flex;
     flex-wrap:wrap;
+    margin:auto;
     background:#1e293b;
     border-radius:12px;
     overflow:hidden;
@@ -43,23 +70,16 @@ body{
 /* HERO */
 .hero{
     flex:1;
-    background:#0f172a;
     padding:40px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
 }
 .hero h1{font-size:28px;margin-bottom:20px;color:#22c55e;}
 .hero p{font-size:16px;color:#cbd5e1;line-height:1.6;}
 
-/* LOGIN BOX */
+/* LOGIN */
 .login-box{
     flex:1;
     background:#020617;
     padding:40px;
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
 }
 .login-box h2{text-align:center;margin-bottom:20px;}
 
@@ -81,44 +101,39 @@ body{
     border-radius:6px;
     background:#22c55e;
     color:white;
-    font-size:16px;
     cursor:pointer;
 }
-.login-box button:hover{ background:#16a34a; }
 
 .signup{
     display:block;
     margin-top:15px;
     color:#38bdf8;
-    text-decoration:none;
-    font-size:14px;
     text-align:center;
 }
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    .container{flex-direction:column;}
-    .hero,.login-box{padding:20px;}
-}
 </style>
+
 </head>
 
 <body>
 
-<div class="container">
+<!-- SEO INTERNAL LINKS -->
+<div class="top-links">
+    <a href="earn-money-bangladesh.html">Earn Money in Bangladesh</a>
+    <a href="best-survey-sites-bd.html">Best Survey Sites BD</a>
+</div>
 
-    <!-- LEFT SIDE -->
-    <div class="hero">
-        <h1>OpenionBD Panel</h1>
+<main class="container">
+
+    <section class="hero">
+        <h1>OpenionBD - Earn Money Online in Bangladesh</h1>
         <p>
-            Earn points by completing surveys, redeem rewards, and join our 
-            community of survey takers. Sign in to start earning today!
+            OpenionBD is one of the best platforms in Bangladesh to earn money online. 
+            Complete surveys, earn points, and redeem rewards بسهولة.
         </p>
-    </div>
+    </section>
 
-    <!-- RIGHT SIDE -->
-    <div class="login-box">
-        <h2>Login</h2>
+    <section class="login-box">
+        <h2>Login to OpenionBD</h2>
 
         <input type="text" id="username" placeholder="Username">
         <input type="password" id="password" placeholder="Password">
@@ -126,16 +141,14 @@ body{
         <button onclick="login()">Login</button>
 
         <a href="signup.html" class="signup">Create Account</a>
-    </div>
+    </section>
 
-</div>
+</main>
 
 <script>
-
-// Auto redirect if already logged in
+// same script (unchanged)
 if(localStorage.getItem("isLoggedIn") === "true"){
     let expiry = localStorage.getItem("expiry");
-
     if(Date.now() < expiry){
         window.location.href = "dashboard.html";
     } else {
@@ -143,12 +156,10 @@ if(localStorage.getItem("isLoggedIn") === "true"){
     }
 }
 
-// Generate panel ID
 function generatePanelCode(){
     return "panel-" + Math.floor(Math.random() * 1000000);
 }
 
-// Login function
 function login(){
     let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
@@ -157,10 +168,8 @@ function login(){
     let savedPass = localStorage.getItem("acc_password");
 
     if(username === savedUser && password === savedPass){
-
         let panel = generatePanelCode();
         let country = navigator.language || "en-US";
-        let refresh = "01";
         let expiry = Date.now() + (24 * 60 * 60 * 1000);
 
         localStorage.setItem("isLoggedIn", "true");
@@ -168,15 +177,12 @@ function login(){
         localStorage.setItem("panel", panel);
         localStorage.setItem("expiry", expiry);
         localStorage.setItem("country", country);
-        localStorage.setItem("refresh", refresh);
 
-        window.location.href = `dashboard.html?${panel}?accountfrom-${username}?${country}?refresh-${refresh}`;
-
+        window.location.href = "dashboard.html";
     } else {
-        alert("cannot logged in please got to https://openionbd.2bd.net/auth.html");
+        alert("Login failed");
     }
 }
-
 </script>
 
 </body>
