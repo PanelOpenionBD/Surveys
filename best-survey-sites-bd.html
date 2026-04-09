@@ -8,32 +8,119 @@
 
 <meta name="description" content="Discover the best survey sites in Bangladesh to earn money online. Trusted platforms with fast payouts including OpenionBD.">
 
-<meta name="keywords" content="survey sites BD, earn money survey Bangladesh, paid surveys BD">
+<meta name="keywords" content="survey sites BD, earn money survey Bangladesh, paid surveys BD, OpenionBD">
 
 <meta name="robots" content="index, follow">
 
+<!-- Open Graph for Social Sharing -->
+<meta property="og:title" content="Best Survey Sites in Bangladesh | OpenionBD">
+<meta property="og:description" content="Earn money online in Bangladesh with trusted survey platforms including OpenionBD.">
+<meta property="og:url" content="https://openionbd.2bd.net/best-survey-sites-bd.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Best Survey Sites in Bangladesh | OpenionBD">
+<meta name="twitter:description" content="Earn money online in Bangladesh with trusted survey platforms including OpenionBD.">
+
+<style>
+body {
+  font-family: Arial, sans-serif;
+  background: #f1f5f9;
+  color: #111827;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #22c55e;
+  margin-bottom: 20px;
+}
+
+h2 {
+  margin-top: 20px;
+  color: #2563eb;
+}
+
+ul {
+  margin-left: 20px;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+</style>
 </head>
 
 <body>
 
-<h1>Best Survey Sites in Bangladesh</h1>
+<h1 id="page-title">Loading...</h1>
+<div id="content"></div>
 
-<p>If you want to earn money online, survey sites are one of the easiest ways in Bangladesh.</p>
+<script>
+// ✅ Data for JS rendering
+const surveyData = {
+  title: "Best Survey Sites in Bangladesh",
+  intro: "If you want to earn money online, survey sites are one of the easiest ways in Bangladesh.",
+  sites: [
+    {
+      name: "OpenionBD",
+      description: "OpenionBD is a fast-growing platform where users can earn rewards by completing surveys.",
+      benefits: ["Easy to use", "Fast rewards", "Designed for Bangladesh users"]
+    },
+    {
+      name: "Other Survey Platforms",
+      description: "Some international platforms are also available but may have limited surveys in Bangladesh."
+    }
+  ],
+  backLink: {
+    href: "index.html",
+    text: "Back to Home"
+  }
+};
 
-<h2>1. OpenionBD</h2>
-<p>OpenionBD is a fast-growing platform where users can earn rewards by completing surveys.</p>
+// ✅ Render content dynamically
+document.getElementById("page-title").textContent = surveyData.title;
 
-<h2>2. Other Survey Platforms</h2>
-<p>Some international platforms are also available but may have limited surveys in Bangladesh.</p>
+let contentDiv = document.getElementById("content");
 
-<h2>Why Choose OpenionBD?</h2>
-<ul>
-<li>Easy to use</li>
-<li>Fast rewards</li>
-<li>Designed for Bangladesh users</li>
-</ul>
+// Intro paragraph
+let intro = document.createElement("p");
+intro.textContent = surveyData.intro;
+contentDiv.appendChild(intro);
 
-<a href="index.html">Back to Home</a>
+// Survey sites
+surveyData.sites.forEach(site => {
+  let h2 = document.createElement("h2");
+  h2.textContent = site.name;
+  contentDiv.appendChild(h2);
+
+  let desc = document.createElement("p");
+  desc.textContent = site.description;
+  contentDiv.appendChild(desc);
+
+  if(site.benefits){
+    let ul = document.createElement("ul");
+    site.benefits.forEach(item => {
+      let li = document.createElement("li");
+      li.textContent = item;
+      ul.appendChild(li);
+    });
+    contentDiv.appendChild(ul);
+  }
+});
+
+// Back link
+let back = document.createElement("a");
+back.href = surveyData.backLink.href;
+back.textContent = surveyData.backLink.text;
+contentDiv.appendChild(back);
+</script>
 
 </body>
 </html>
