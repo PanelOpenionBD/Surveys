@@ -155,5 +155,29 @@ padding:10px;
 <footer>© 2026 OpenionBD</footer>
 
 <script src="session.js"></script>
+<script>
+    // Function to redirect when offline
+    function handleOffline() {
+        if (!navigator.onLine) {
+            // Redirect to your server down page
+            window.location.href = "serverdown.html";
+        }
+    }
+
+    // Check immediately on page load
+    handleOffline();
+
+    // Listen for offline events
+    window.addEventListener("offline", () => {
+        window.location.href = "serverdown.html";
+    });
+
+    // Optional: listen for online event if you want to notify when back
+    window.addEventListener("online", () => {
+        console.log("Back online!");
+        // You can auto-reload the page if needed
+        // location.reload();
+    });
+</script>
 </body>
 </html>
