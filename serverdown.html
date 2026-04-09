@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>OpenionBD | Server Down</title>
+<style>
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        text-align: center;
+        padding: 50px;
+    }
+    .container {
+        max-width: 500px;
+        margin: auto;
+        background: #fff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    h1 {
+        color: #e74c3c;
+    }
+    p {
+        font-size: 18px;
+    }
+    .retry-btn {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background: #3498db;
+        color: white;
+        text-decoration: none;
+        border-radius: 5px;
+        transition: 0.3s;
+    }
+    .retry-btn:hover {
+        background: #2980b9;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>⚠ Server Unavailable</h1>
+    <p>OpenionBD is currently offline or your network is down.</p>
+    <p>We'll redirect you in a few seconds...</p>
+    <a class="retry-btn" href="#" onclick="checkServer()">Retry Now</a>
+</div>
+
+<script>
+    const redirectURL = "offline.html"; // <-- change to your desired fallback page
+
+    // Function to check server/network
+    async function checkServer() {
+        try {
+            // Ping your server (replace with your server URL if needed)
+            const response = await fetch("/", { method: 'HEAD', cache: 'no-cache' });
+            if (response.ok) {
+                // Server is up, reload page
+                location.reload();
+            } else {
+                // Server responded but not OK
+                alert("Server still down. Redirecting...");
+                window.location.href = redirectURL;
+            }
+        } catch (error) {
+            // Network/server down
+            window.location.href = redirectURL;
+        }
+    }
+
+    // Auto-check after 5 seconds
+    setTimeout(checkServer, 5000);
+</script>
+
+</body>
+</html>
