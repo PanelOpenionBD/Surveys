@@ -1,6 +1,6 @@
 // SUPABASE CONFIG (replace later)
 const SUPABASE_URL = "https://yfofeoxkkghhxrumzkpb.supabase.co";
-const SUPABASE_ANON_KEY = "sb_publishable_9Ey1FSAF2sNSW24wSiA5Vw_WC1cB9dr";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inlmb2Zlb3hra2doaHhydW16a3BiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzcwOTk2MzAsImV4cCI6MjA5MjY3NTYzMH0.tAFm_Qlg-3Kt3r5WE6qQepozS2jnzY7Y1t_fIHPazlE";
 
 // Web3Forms key (replace later)
 const WEB3FORMS_KEY = "8b1d3932-20db-43c9-be47-8b101fe5d4f9";
