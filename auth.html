@@ -6,6 +6,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial, Helvetica, sans-serif;
+}
+
 body{
 background:#0f172a;
 color:white;
@@ -13,7 +20,6 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-font-family:Arial;
 }
 
 .box{
@@ -22,14 +28,16 @@ padding:30px;
 border-radius:12px;
 width:320px;
 text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 input{
 width:100%;
 padding:12px;
-margin:8px 0;
+margin:10px 0;
 border:none;
 border-radius:6px;
+outline:none;
 background:#020617;
 color:white;
 }
@@ -37,11 +45,24 @@ color:white;
 button{
 width:100%;
 padding:12px;
-background:#3b82f6;
 border:none;
 border-radius:6px;
+background:#3b82f6;
 color:white;
 cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+a{
+margin-top:12px;
+display:block;
+color:#38bdf8;
+text-decoration:none;
+font-size:14px;
 }
 </style>
 </head>
@@ -55,6 +76,8 @@ cursor:pointer;
 <input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
+
+<a href="signup.html">Create account</a>
 </div>
 
 <script src="auth.js"></script>
