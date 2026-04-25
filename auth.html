@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>Login | OpenionBD</title>
@@ -19,35 +19,29 @@ font-family:Arial;
 .box{
 background:#1e293b;
 padding:30px;
-border-radius:10px;
-width:300px;
+border-radius:12px;
+width:320px;
 text-align:center;
 }
 
 input{
 width:100%;
-padding:10px;
-margin:10px 0;
+padding:12px;
+margin:8px 0;
 border:none;
 border-radius:6px;
+background:#020617;
+color:white;
 }
 
 button{
 width:100%;
-padding:10px;
+padding:12px;
+background:#3b82f6;
 border:none;
 border-radius:6px;
-background:#22c55e;
 color:white;
 cursor:pointer;
-margin-top:10px;
-}
-
-.signup{
-margin-top:15px;
-display:block;
-color:#38bdf8;
-text-decoration:none;
 }
 </style>
 </head>
@@ -57,79 +51,13 @@ text-decoration:none;
 <div class="box">
 <h2>Login</h2>
 
-<input type="text" id="username" placeholder="Username">
+<input type="email" id="email" placeholder="Email">
 <input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
-
-<a href="signup.html" class="signup">Create Account</a>
 </div>
 
-<script>
+<script src="auth.js"></script>
 
-// Skip login if already logged in
-if(localStorage.getItem("isLoggedIn") === "true"){
-    if(Date.now() < localStorage.getItem("expiry")){
-        window.location.href = "dashboard.html";
-    }
-}
-
-function generatePanelCode(){
-    return "panel-" + Math.floor(Math.random() * 1000000);
-}
-
-function login(){
-    let username = document.getElementById("username").value;
-    let password = document.getElementById("password").value;
-
-    let savedUser = localStorage.getItem("acc_username");
-    let savedPass = localStorage.getItem("acc_password");
-
-    if(username === savedUser && password === savedPass){
-
-        let panel = generatePanelCode();
-        let country = navigator.language || "en-US";
-        let refresh = "01";
-        let expiry = Date.now() + (24 * 60 * 60 * 1000);
-
-        localStorage.setItem("isLoggedIn", "true");
-        localStorage.setItem("username", username);
-        localStorage.setItem("panel", panel);
-        localStorage.setItem("expiry", expiry);
-        localStorage.setItem("country", country);
-        localStorage.setItem("refresh", refresh);
-
-        window.location.href = `dashboard.html?${panel}?accountfrom-${username}?${country}?refresh-${refresh}`;
-
-    } else {
-        alert("Invalid username or password");
-    }
-}
-
-</script>
-<script>
-    // Function to redirect when offline
-    function handleOffline() {
-        if (!navigator.onLine) {
-            // Redirect to your server down page
-            window.location.href = "serverdown.html";
-        }
-    }
-
-    // Check immediately on page load
-    handleOffline();
-
-    // Listen for offline events
-    window.addEventListener("offline", () => {
-        window.location.href = "serverdown.html";
-    });
-
-    // Optional: listen for online event if you want to notify when back
-    window.addEventListener("online", () => {
-        console.log("Back online!");
-        // You can auto-reload the page if needed
-        // location.reload();
-    });
-</script>
 </body>
 </html>
