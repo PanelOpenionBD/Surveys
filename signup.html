@@ -70,13 +70,19 @@ font-size:14px;
 <div class="box">
 <h2>Create Account</h2>
 
-<input type="text" id="username" placeholder="Username">
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="password" placeholder="Password">
-<input type="password" id="confirmPassword" placeholder="Confirm Password">
-<input type="text" id="district" placeholder="District">
-<input type="text" id="phone" placeholder="Phone Number">
-<input type="text" id="referral" placeholder="Referral Code">
+<input type="text" id="username" placeholder="Username" required>
+
+<input type="email" id="email" placeholder="Email" required>
+
+<input type="password" id="password" placeholder="Password" required minlength="6">
+
+<input type="password" id="confirmPassword" placeholder="Confirm Password" required minlength="6">
+
+<input type="text" id="district" placeholder="District" required>
+
+<input type="tel" id="phone" placeholder="Phone Number" required>
+
+<input type="text" id="referral" placeholder="Referral Code (optional)">
 
 <button onclick="signup()">Signup</button>
 
