@@ -1,18 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <title>Login | OpenionBD</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
 background:#0f172a;
 color:white;
@@ -20,49 +13,41 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+font-family:Arial;
 }
 
 .box{
 background:#1e293b;
 padding:30px;
-border-radius:12px;
-width:320px;
+border-radius:10px;
+width:300px;
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 input{
 width:100%;
-padding:12px;
+padding:10px;
 margin:10px 0;
 border:none;
 border-radius:6px;
-outline:none;
-background:#020617;
-color:white;
 }
 
 button{
 width:100%;
-padding:12px;
+padding:10px;
 border:none;
 border-radius:6px;
-background:#3b82f6;
+background:#22c55e;
 color:white;
 cursor:pointer;
-font-size:16px;
+margin-top:10px;
 }
 
-button:hover{
-background:#2563eb;
-}
-
-a{
-margin-top:12px;
+.signup{
+margin-top:15px;
 display:block;
 color:#38bdf8;
 text-decoration:none;
-font-size:14px;
 }
 </style>
 </head>
@@ -72,15 +57,79 @@ font-size:14px;
 <div class="box">
 <h2>Login</h2>
 
-<input type="email" id="email" placeholder="Email">
+<input type="text" id="username" placeholder="Username">
 <input type="password" id="password" placeholder="Password">
 
 <button onclick="login()">Login</button>
 
-<a href="signup.html">Create account</a>
+<a href="signup.html" class="signup">Create Account</a>
 </div>
 
-<script src="auth.js"></script>
+<script>
 
+// Skip login if already logged in
+if(localStorage.getItem("isLoggedIn") === "true"){
+    if(Date.now() < localStorage.getItem("expiry")){
+        window.location.href = "dashboard.html";
+    }
+}
+
+function generatePanelCode(){
+    return "panel-" + Math.floor(Math.random() * 1000000);
+}
+
+function login(){
+    let username = document.getElementById("username").value;
+    let password = document.getElementById("password").value;
+
+    let savedUser = localStorage.getItem("acc_username");
+    let savedPass = localStorage.getItem("acc_password");
+
+    if(username === savedUser && password === savedPass){
+
+        let panel = generatePanelCode();
+        let country = navigator.language || "en-US";
+        let refresh = "01";
+        let expiry = Date.now() + (24 * 60 * 60 * 1000);
+
+        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("username", username);
+        localStorage.setItem("panel", panel);
+        localStorage.setItem("expiry", expiry);
+        localStorage.setItem("country", country);
+        localStorage.setItem("refresh", refresh);
+
+        window.location.href = `dashboard.html?${panel}?accountfrom-${username}?${country}?refresh-${refresh}`;
+
+    } else {
+        alert("Invalid username or password");
+    }
+}
+
+</script>
+<script>
+    // Function to redirect when offline
+    function handleOffline() {
+        if (!navigator.onLine) {
+            // Redirect to your server down page
+            window.location.href = "serverdown.html";
+        }
+    }
+
+    // Check immediately on page load
+    handleOffline();
+
+    // Listen for offline events
+    window.addEventListener("offline", () => {
+        window.location.href = "serverdown.html";
+    });
+
+    // Optional: listen for online event if you want to notify when back
+    window.addEventListener("online", () => {
+        console.log("Back online!");
+        // You can auto-reload the page if needed
+        // location.reload();
+    });
+</script>
 </body>
 </html>
