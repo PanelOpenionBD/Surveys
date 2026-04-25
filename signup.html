@@ -6,13 +6,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Arial, Helvetica, sans-serif;
-}
-
 body{
 background:#0f172a;
 color:white;
@@ -20,24 +13,23 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
+font-family:Arial;
 }
 
 .box{
 background:#1e293b;
 padding:30px;
 border-radius:12px;
-width:340px;
+width:320px;
 text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,0.3);
 }
 
 input{
 width:100%;
 padding:12px;
-margin:8px 0;
+margin:10px 0;
 border:none;
 border-radius:6px;
-outline:none;
 background:#020617;
 color:white;
 }
@@ -45,22 +37,18 @@ color:white;
 button{
 width:100%;
 padding:12px;
+background:#22c55e;
 border:none;
 border-radius:6px;
-background:#22c55e;
 color:white;
 cursor:pointer;
-font-size:16px;
 }
-
-button:hover{background:#16a34a;}
 
 a{
 display:block;
 margin-top:10px;
 color:#38bdf8;
 text-decoration:none;
-font-size:14px;
 }
 </style>
 </head>
@@ -68,25 +56,15 @@ font-size:14px;
 <body>
 
 <div class="box">
-<h2>Create Account</h2>
+<h2>Signup</h2>
 
-<input type="text" id="username" placeholder="Username" required>
-
-<input type="email" id="email" placeholder="Email" required>
-
-<input type="password" id="password" placeholder="Password" required minlength="6">
-
-<input type="password" id="confirmPassword" placeholder="Confirm Password" required minlength="6">
-
-<input type="text" id="district" placeholder="District" required>
-
-<input type="tel" id="phone" placeholder="Phone Number" required>
-
-<input type="text" id="referral" placeholder="Referral Code (optional)">
+<input type="text" id="username" placeholder="Username">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="password" placeholder="Password">
 
 <button onclick="signup()">Signup</button>
 
-<a href="auth.html">Already have account? Login</a>
+<a href="auth.html">Login here</a>
 </div>
 
 <script src="signup.js"></script>
